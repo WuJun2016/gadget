@@ -5,8 +5,9 @@
 // @description  重定向知乎登录页面到发现页面
 // @author       wj
 // @run-at       document-idle
-// @match        https://www.zhihu.com/*
+// @match        https://*.zhihu.com/*
 // @grant        none
+// @license MIT
 // ==/UserScript==
 //
 (function () {
@@ -19,7 +20,9 @@
     window.location.href = "https://www.zhihu.com/explore";
   }
 
-  if (window.location.href.indexOf("https://www.zhihu.com") !== -1) {
+  const regex = /^https?:\/\/.*\.zhihu\.com\/.*$/;
+  const url = window.location.href;
+  if (regex.test(url)) {
     // 功能二：移除知乎登录页面的登录框
 
     function checkAndTriggerTilde() {
